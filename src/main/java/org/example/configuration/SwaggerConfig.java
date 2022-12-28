@@ -32,10 +32,10 @@ public class SwaggerConfig {
                            @Value("v1.0.0") String appVersion
     ) {
         final String securitySchemeName = "bearerAuth";
-//        Server server = new Server();
-//        server.setUrl("https://microserviceuserchallenge7-production.up.railway.app/");
-//        List<Server> listOfServer = new ArrayList<>();
-//        listOfServer.add(server);
+        Server server = new Server();
+        server.setUrl("https://user-microservice-challenge8.up.railway.app/");
+        List<Server> listOfServer = new ArrayList<>();
+        listOfServer.add(server);
 
         return new OpenAPI()
                 .info(new Info()
@@ -48,7 +48,6 @@ public class SwaggerConfig {
                                 .url("http://springdoc.org")
                         )
                 )
-                //.servers(listOfServer)
                 .addSecurityItem(new SecurityRequirement()
                         .addList(securitySchemeName)
                 )
@@ -62,6 +61,6 @@ public class SwaggerConfig {
                                         .description("Masukkan token yang sudah digenerate di endpoint api/auth/signin")
                                         .bearerFormat("JWT")
                         )
-                );
+                ).servers(listOfServer);
     }
 }
